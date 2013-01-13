@@ -148,8 +148,8 @@ def downloadFileWithPython(song_name, song_artist,
 
             print "Downloading %s - %s" % (song_artist[i], song_name[i])
             urlretrieve(song_link[i], media_filepath)
-
-            if(write_tag) and (song_type[i] == 'mp3'):
+	    extension =[ "mp3", "mp4" ]
+            if(write_tag) and (song_type[i] in extension ):
                 tag.link(media_filepath)
                 tag.setTitle(convert_to_ascii(song_name[i]))
                 tag.setArtist(convert_to_ascii(song_artist[i]))
@@ -184,8 +184,8 @@ def downloadFileWithWget(song_name, song_artist,
 
             print "Downloading %s - %s" % (song_artist[i], song_name[i])
             call(wget + wget_args)
-
-            if(write_tag) and (song_type[i] == 'mp3'):
+	    extension = ["mp3", "mp4"]
+            if(write_tag) and (song_type[i] in extension):
                 tag.link(media_filepath)
                 tag.setTitle(convert_to_ascii(song_name[i]))
                 tag.setArtist(convert_to_ascii(song_artist[i]))
